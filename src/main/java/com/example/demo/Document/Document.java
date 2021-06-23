@@ -1,6 +1,20 @@
 package com.example.demo.Document;
 
+import javax.persistence.*;
+
+@Entity // for hibernate
+@Table // For the table in our DB   
 public class Document {
+    @Id
+    @SequenceGenerator(
+            name="document_sequence",
+            sequenceName = "document_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "document_sequence"
+    )
     private Long id;
     private String username;
     private String name;

@@ -1,6 +1,6 @@
 package com.example.demo.Document;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,15 +9,14 @@ import java.util.List;
 @Service //Same as @Component, we're using Service for readability - this will tell
 // the compiler that this service will have to be injected
 public class DocumentService {
+    private final DocumentRepository documentRepository;
+
+    @Autowired
+    public DocumentService(DocumentRepository documentRepository) {
+        this.documentRepository = documentRepository;
+    }
+
     public List<Document> getDocuments(){
-        return List.of(
-                new Document(
-                        1L,
-                        "DushyantPathak",
-                        "Aadhar",
-                        "https://aadhar.com/aadhar",
-                        "123456789"
-                )
-        );
+        return documentRepository.findAll();
     }
 }

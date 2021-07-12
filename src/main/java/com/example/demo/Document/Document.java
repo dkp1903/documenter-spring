@@ -1,6 +1,7 @@
 package com.example.demo.Document;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity // for hibernate
 @Table // For the table in our DB   
@@ -20,7 +21,8 @@ public class Document {
     private String name;
     private String url;
     private String identifier;
-
+    @Transient
+    private LocalDate lastUpdated;
     public Document() {
     }
 
@@ -79,6 +81,15 @@ public class Document {
         this.identifier = identifier;
     }
 
+    public LocalDate getUpdated() {
+        return LocalDate.now();
+
+    }
+
+    public void setUpdated(LocalDate lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+
     @Override
     public String toString() {
         return "Document{" +
@@ -87,6 +98,7 @@ public class Document {
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
                 ", identifier='" + identifier + '\'' +
+                ", lastUpdated='" + lastUpdated + '\'' +
                 '}';
     }
 }

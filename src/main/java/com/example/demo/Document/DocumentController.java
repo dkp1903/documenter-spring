@@ -1,9 +1,8 @@
 package com.example.demo.Document;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController // This annotation makes this class serve restful endpoints
@@ -20,5 +19,10 @@ public class DocumentController {
     @GetMapping
     public List<Document> getDocuments(){
         return documentService.getDocuments();
+    }
+
+    @PostMapping
+    public void addNewDocument(@RequestBody Document document) {
+        documentService.addNewDocument(document);
     }
 }

@@ -10,6 +10,6 @@ import java.util.Optional;
 // We want the JpaRepo to work with the type document, and Long represents the Student ID
 public interface DocumentRepository extends JpaRepository<Document, Long>{
 
-    @Query("SELECT d FROM Document d WHERE d.username=$1")  //Document is Document.java class
+    @Query("SELECT d FROM Document d WHERE d.username=?1")  //Document is Document.java class
     Optional<Document> findDocumentByUsername(String username);
 }

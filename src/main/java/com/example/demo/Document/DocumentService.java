@@ -22,7 +22,11 @@ public class DocumentService {
     }
 
     public void addNewDocument(Document document) {
-            //Optional<Document> documentByUsername =  documentRepository.findDocumentByUsername(document.getUsername());
-            System.out.println(document);
+            Optional<Document> documentOptional =  documentRepository.findDocumentByUsername(document.getUsername());
+            if(documentOptional.isPresent()){
+                throw new IllegalStateException("email taken");
+            }
+            // validation, if any, should come here
+            documentRepository.save(document);
     }
 }

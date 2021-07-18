@@ -13,16 +13,17 @@ public class DocumentConfig {
     CommandLineRunner commandLineRunner(DocumentRepository repository) {
         return args -> {
                 Document DKPAadhar = new Document(
-                        "123456789101",
+                        "dkp1903",
                         "Aadhar",
-                        "https://drive.google.com",
-                        "dkp1903"
+                        "https://drive.google.com/1",
+                        "12345"
+
                 );
             Document PKPAadhar = new Document(
-                    "3214567394",
+                    "pkp2004",
                     "Aadhar",
-                    "https://drive.google.com/1",
-                    "pkp2207"
+                    "https://drive.google.com/2",
+                    "6789"
             );
 
             repository.saveAll(

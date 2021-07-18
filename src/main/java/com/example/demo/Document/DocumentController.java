@@ -30,4 +30,12 @@ public class DocumentController {
     public void deleteDocument(@PathVariable("documentId") Long documentId ) {
         documentService.deleteDocument(documentId);
     }
+
+    @PutMapping(path = "{documentId}")
+    public void updateDocument(@PathVariable("documentId") Long documentId, @RequestParam(required = false) String username,
+                               @RequestParam(required = false) String name,
+                               @RequestParam(required = false) String url,
+                               @RequestParam(required = false) String identifier){
+        documentService.updateDocument(documentId, username, name, url, identifier);
+    }
 }

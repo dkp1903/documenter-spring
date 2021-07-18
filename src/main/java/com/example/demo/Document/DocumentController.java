@@ -25,4 +25,9 @@ public class DocumentController {
     public void addNewDocument(@RequestBody Document document) {
         documentService.addNewDocument(document);
     }
+
+    @DeleteMapping(path = "{documentId}")
+    public void deleteDocument(@PathVariable("documentId") Long documentId ) {
+        documentService.deleteDocument(documentId);
+    }
 }

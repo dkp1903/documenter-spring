@@ -29,4 +29,12 @@ public class DocumentService {
             // validation, if any, should come here
             documentRepository.save(document);
     }
+
+    public void deleteDocument(Long documentId) {
+        boolean exists = documentRepository.existsById(documentId);
+        if(!exists){
+            throw new IllegalStateException("student with id " + documentId + " does not exist");
+        }
+        documentRepository.deleteById(documentId);
+    }
 }
